@@ -1,0 +1,37 @@
+" colorscheme
+color jellybeans+
+
+" set size of window
+au GUIEnter * set lines=50 columns=100
+
+" Bubble Single lines
+nmap <m-up> [e
+nmap <m-down> ]e
+
+" Bubble mutliple lines
+vmap <m-up> [egv
+vmap <m-down> ]egv
+
+" Ctrl-s save
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
+
+" Ctrl-V paste, Ctrl-C copy
+map <C-V> "+gP
+cmap <C-V> <C-R>+
+vnoremap <C-C> "+y
+
+" Use ctrl + movement keys to move around windows
+map <C-H> <C-W>h
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+
+" Remove all gui options 
+set guioptions-=L
+set guioptions-=l
+set guioptions-=R
+set guioptions-=r
+"set guioptions-=b
+" set guioptions-=m
