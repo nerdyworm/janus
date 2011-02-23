@@ -1,6 +1,7 @@
 " colorscheme
-color jellybeans+
-color moria
+"color jellybeans+
+"color moria
+color lucius
 
 " set size of window
 au GUIEnter * set lines=50 columns=100
@@ -18,6 +19,7 @@ noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
 
+
 " Ctrl-V paste, Ctrl-C copy
 map <C-V> "+gP
 cmap <C-V> <C-R>+
@@ -29,10 +31,23 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
 
-" Remove all gui options 
+" Remove gui options 
 set guioptions-=L
 set guioptions-=l
 set guioptions-=R
 set guioptions-=r
-"set guioptions-=b
-" set guioptions-=m
+
+" Command-T for CommandT
+map <C-t> :CommandT<CR>
+imap <C-t> <Esc>:CommandT<CR>
+
+" Command-e for ConqueTerm
+map <c-E> :call StartTerm()<CR>
+
+" Command-/ to toggle comments
+map <m-/> <plug>NERDCommenterToggle<CR>
+
+" Command-][ to increase/decrease indentation
+vmap <m-]> >gv
+vmap <m-[> <gv
+
