@@ -1,3 +1,4 @@
-let mapleader = ","
-
 map <Leader>d :NERDTreeToggle<CR>
+
+" Map jj to Esc
+:imap jj <Esc>

@@ -7,6 +7,9 @@ syntax on
 " Set encoding
 set encoding=utf-8
 
+" Map <Leader> to ,
+let mapleader = ","
+
 " Whitespace stuff
 set nowrap
 set tabstop=2
