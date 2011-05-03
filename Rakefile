@@ -129,7 +129,7 @@ vim_plugin_task "haml",             "git://github.com/tpope/vim-haml.git"
 vim_plugin_task "indent_object",    "git://github.com/michaeljsmith/vim-indent-object.git"
 vim_plugin_task "javascript",       "git://github.com/pangloss/vim-javascript.git"
 vim_plugin_task "jslint",           "git://github.com/hallettj/jslint.vim.git"
-vim_plugin_task "markdown_preview", "git://github.com/robgleeson/vim-markdown-preview.git"
+#vim_plugin_task "markdown_preview", "git://github.com/robgleeson/vim-markdown-preview.git"
 vim_plugin_task "nerdtree",         "git://github.com/wycats/nerdtree.git"
 vim_plugin_task "nerdcommenter",    "git://github.com/ddollar/nerdcommenter.git"
 vim_plugin_task "surround",         "git://github.com/tpope/vim-surround.git"
@@ -150,9 +150,10 @@ vim_plugin_task "endwise",          "git://github.com/tpope/vim-endwise.git"
 vim_plugin_task "irblack",          "git://github.com/wgibbs/vim-irblack.git"
 vim_plugin_task "vim-coffee-script","git://github.com/kchmck/vim-coffee-script.git"
 vim_plugin_task "syntastic",        "git://github.com/scrooloose/syntastic.git"
+vim_plugin_task "vim-slime",        "git://github.com/jpalardy/vim-slime.git"
 
 vim_plugin_task "command_t",        "git://github.com/wincent/Command-T.git" do
-  sh "find ruby -name '.gitignore' | xargs rm"
+  #sh "find ruby -name '.gitignore' | xargs rm"
   Dir.chdir "ruby/command-t" do
     #if `rvm > /dev/null 2>&1` && $?.exitstatus == 0
     #  sh "rvm system ruby extconf.rb"
@@ -162,6 +163,14 @@ vim_plugin_task "command_t",        "git://github.com/wincent/Command-T.git" do
     sh "/usr/bin/ruby1.8 extconf.rb"
     sh "make clean && make"
   end
+end
+
+#vim clojure go go
+#
+vim_plugin_task "vim_clojure" do
+  sh "curl http://www.vim.org/scripts/download_script.php?src_id=13986 > vim_clojure.zip"
+  sh "unzip vim_clojure.zip"
+  sh "rm vim_clojure.zip"
 end
 
 vim_plugin_task "janus_themes" do
@@ -195,14 +204,24 @@ end
 vim_plugin_task "molokai" do
   sh "curl http://www.vim.org/scripts/download_script.php?src_id=9750 > colors/molokai.vim"
 end
+
 vim_plugin_task "mustache" do
   sh "curl https://github.com/defunkt/mustache/raw/master/contrib/mustache.vim > syntax/mustache.vim"
   File.open(File.expand_path('../ftdetect/mustache.vim', __FILE__), 'w') do |file|
     file << "au BufNewFile,BufRead *.mustache        setf mustache"
   end
 end
+
 vim_plugin_task "vwilight" do
   sh "curl https://gist.github.com/raw/796172/724c7ca237a7f6b8d857c4ac2991cfe5ffb18087/vwilight.vim > colors/vwilight.vim"
+end
+
+vim_plugin_task "less-css" do
+  sh "curl http://leafo.net/lessphp/vim/less.vim  > syntax/less.vim"
+end
+
+vim_plugin_task "vim-json" do
+  sh "curl http://www.vim.org/scripts/download_script.php?src_id=10853  > syntax/json.vim"
 end
 
 desc "Update the documentation"

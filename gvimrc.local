@@ -1,10 +1,11 @@
 " colorscheme
-"color jellybeans+
-"color moria
-color lucius
+" color jellybeans++
+" color moria
+" color lucius
+color ir_black+
 
 " set size of window
-au GUIEnter * set lines=50 columns=100
+au GUIEnter * set lines=65 columns=120
 
 " Bubble Single lines
 nmap <m-up> [e
@@ -31,11 +32,12 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
 
-" Remove gui options 
+" Remove gui options
 set guioptions-=L
 set guioptions-=l
 set guioptions-=R
 set guioptions-=r
+set guioptions-=m
 
 " Command-T for CommandT
 map <C-t> :CommandT<CR>
@@ -52,16 +54,21 @@ vmap <m-]> >gv
 vmap <m-[> <gv
 
 " Let coffeescript compile on save
-let coffee_compile_on_save = 1
+" let coffee_compile_on_save = 1
 
 " Set font
-set guifont=Monaco\ 11
+" set guifont=Inconsolata\ 12
+set guifont=Monaco\ 10
 
 " Auto refresh google chrome on save
-autocmd BufWriteCmd *.html,*.css,*.erb :call Refresh_browser()
+autocmd BufWriteCmd *.html,*.css,*.erb,*.less,*.js,*.scss :call Refresh_browser()
 function Refresh_browser()
   if &modified
     write
-    silent !xdotool search --class google-chrome key ctrl+r
+    silent !xdotool search --onlyvisible "Google Chrome" key ctrl+r
   endif
 endfunction
+
+" Compile less css on save
+autocmd BufWritePost,FileWritePost *.less silent !lessc <afile> &
+
