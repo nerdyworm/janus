@@ -72,3 +72,6 @@ endfunction
 " Compile less css on save
 autocmd BufWritePost,FileWritePost *.less silent !lessc <afile> &
 
+
+autocmd BufRead,BufNewFile *.erb set filetype=eruby.html5
+
